@@ -92,6 +92,11 @@ Worked on addons for honeywell
 5. Reporting for confluence - used for reporting 
 6. Zephyr scale reporting for confluence - need to do more  
 
+Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
+Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
+Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
+Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
+Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
 
 
 
