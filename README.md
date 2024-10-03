@@ -98,3 +98,10 @@ Before copying, review your selections, and if needed, edit them to include, exc
 Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
 Before copying, review your selections, and if needed, edit them to include, exclude, or change any data.
 Testing branch protection rule 1
+
+1. Baselines for Confluences 
+2. Comala document management 
+3. Scroll PDF EXporter 
+4. Content Formatting macros for Confluence
+5. Reporting for confluence - used for reporting 
+6. Zephyr scale reporting for confluence - need to do more  
