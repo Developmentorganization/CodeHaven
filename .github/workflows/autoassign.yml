@@ -12,7 +12,7 @@ jobs:
  
       - name: Assign unassigned Jira issues
         run: |
-          ASSIGNEE="7bca8938-dd31-1971-7340-023bb949b550"
+          ASSIGNEE="7bca8938-dd31-1971-7340-023bb949b550/users/63d0b9bc16dfc2b1fbca756b"
           JIRA_BASE_URL="https://snehafirangi.atlassian.net"
           JIRA_USERNAME="snehac@devtools.in"
           JIRA_API_TOKEN="ATATT3xFfGF0MEC8r7SajylJdLACl1m1xeTkmoQ4Ny4s-xycCFqLUwbDldM9g3qygGaUSbhtqajGxXfK-21j610_tPFtIQsBuMmyN1l2iY00T6wnhry0QQkXKv0hf4VFGkt4tLwUmTmPcezejfz5OezCULfHihCF6zetCVHay18kVBVinRt239Y=9F545ABC"
