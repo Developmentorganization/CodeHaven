@@ -1,0 +1,53 @@
+name: Auto Assign Jira Issues
+ 
+on:
+  workflow_dispatch:
+ 
+jobs:
+  auto_assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+ 
+      - name: Assign unassigned Jira issues
+        run: |
+          ASSIGNEE="7bca8938-dd31-1971-7340-023bb949b550"
+          JIRA_BASE_URL="https://snehafirangi.atlassian.net"
+          JIRA_USERNAME="snehac@devtools.in"
+          JIRA_API_TOKEN="ATATT3xFfGF0MEC8r7SajylJdLACl1m1xeTkmoQ4Ny4s-xycCFqLUwbDldM9g3qygGaUSbhtqajGxXfK-21j610_tPFtIQsBuMmyN1l2iY00T6wnhry0QQkXKv0hf4VFGkt4tLwUmTmPcezejfz5OezCULfHihCF6zetCVHay18kVBVinRt239Y=9F545ABC"
+          PROJECT_KEY="SWP"
+ 
+          # Fetch unassigned issues
+          RESPONSE=$(curl -u $JIRA_USERNAME:$JIRA_API_TOKEN \
+            -X GET \
+            -H "Content-Type: application/json" \
+            "$JIRA_BASE_URL/rest/api/3/search?jql=assignee=null")
+ 
+          # Output the response for debugging
+          echo "Jira API response: $RESPONSE"
+ 
+          # Save the response to issues.json
+          echo "$RESPONSE" > issues.json
+ 
+          # Check if issues.json contains any issues
+          if jq -e '.issues | length == 0' issues.json > /dev/null; then
+            echo "No unassigned issues found."
+            exit 0
+          fi
+ 
+          # Extract issue keys
+          ISSUE_KEYS=$(jq -r '.issues[].key' issues.json)
+ 
+          # Assign issues
+          for ISSUE_KEY in $ISSUE_KEYS; do
+            echo "Assigning issue $ISSUE_KEY to $ASSIGNEE"
+            ASSIGN_RESPONSE=$(curl -u $JIRA_USERNAME:$JIRA_API_TOKEN \
+              -X PUT \
+              -H "Content-Type: application/json" \
+              -d "{\"fields\":{\"assignee\":{\"id\":\"$ASSIGNEE\"}}}" \
+              "$JIRA_BASE_URL/rest/api/3/issue/$ISSUE_KEY")
+ 
+            # Output the assign response for debugging
+            echo "Assign response: $ASSIGN_RESPONSE"
+          done
