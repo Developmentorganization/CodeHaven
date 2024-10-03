@@ -17,8 +17,8 @@ jobs:
 
       run: |
             curl --request POST \
-            --url "${JIRA_BASE_URL}/rest/api/3/issue" \
-            --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+            --url "https://snehafirangi.atlassian.net/rest/api/3/issue" \
+            --user "snehac@devtools.in:${JIRA_API_TOKEN}" \
             --header 'Accept: application/json' \
             --header 'Content-Type: application/json' \
             --data '{
