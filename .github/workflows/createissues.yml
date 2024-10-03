@@ -14,22 +14,21 @@ jobs:
         JIRA_BASE_URL: ${{ secrets.JIRA_URL }}
         JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-      run: |
-          curl --request POST \
-          --url "${JIRA_BASE_URL}/rest/api/3/issue" \
-          --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
-          --header 'Accept: application/json' \
-          --header 'Content-Type: application/json' \
-          --data '{
-            "fields": {
-              "project": {
-                "key": "SWP"
-              },
-              "summary": "Task Master",
-              "issuetype": {
-                "id": "10119"
-              }
-            }
-          }'
 
-          
+      run: |
+            curl --request POST \
+            --url "${JIRA_BASE_URL}/rest/api/3/issue" \
+            --user "${JIRA_EMAIL}:${JIRA_API_TOKEN}" \
+            --header 'Accept: application/json' \
+            --header 'Content-Type: application/json' \
+            --data '{
+              "fields": {
+                "project": {
+                  "key": "SWP"
+                },
+                "summary": "Task Master",
+                "issuetype": {
+                  "id": "10119"
+                }
+              }
+            }'
